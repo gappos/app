@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Person</title>
+  </head>
+  <body>
+    <div class="flex-col container">
+      <h4 class="item item-title">First Name:</h4>
+      <p class="item item-para" id="firstname"></p>
+      <h4 class="item item-title">Last Name:</h4>
+      <p class="item item-para" id="lastname"></p>
+      <h4 class="item item-title">Date Of Birth</h4>
+      <p class="item item-para" id="dob"></p>
+      <h4 class="item item-title">Place Of Birth</h4>
+      <p class="item item-para" id="place"></p>
+    </div>
+  </body>
+  <script>
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop)
+    });
+    const firstname = document.getElementById('firstname');
+    firstname.innerHTML = params.firstname;
+    const lastname = document.getElementById('lastname');
+    lastname.innerHTML = params.lastname;
+    const dob = document.getElementById('dob');
+    dob.innerHTML = params.dob;
+    const place = document.getElementById('place');
+    place.innerHTML = params.place;
+  </script>
+</html>
