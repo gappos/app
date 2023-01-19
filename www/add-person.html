@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <h1>New Person</h1>
+
+    <!-- Create Form -->
+    <form class="container" id="form" method="get" action="person.html">
+      <!-- Details -->
+      <div class="form-control">
+        <label for="firstname"> First Name </label>
+
+        <!-- Input Type Text -->
+        <input type="text" name="firstname" placeholder="Enter first name" />
+      </div>
+
+      <div class="form-control">
+        <label for="lastname"> Last Name </label>
+
+        <!-- Input Type Text -->
+        <input type="text" name="lastname" placeholder="Enter last name" />
+      </div>
+
+      <div class="form-control">
+        <label for="dob"> Date Of Birth </label>
+
+        <!-- Input Type Email-->
+        <input type="date" name="dob" placeholder="Enter your date of birth" />
+      </div>
+
+      <div class="form-control">
+        <label for="place"> Place Of Birth </label>
+
+        <!-- Dropdown options -->
+        <select name="place" id="place">
+          <option value="other">Other</option>
+          <option value="vilnius">Vilnius</option>
+          <option value="kupiskis">Kupiškis</option>
+          <option value="jieznas">Jieznas</option>
+          <option value="ezerelis">Ežerėlis</option>
+        </select>
+      </div>
+
+      <!-- Multi-line Text Input Control -->
+      <button type="submit" value="submit">Submit</button>
+    </form>
+  </body>
+</html>
