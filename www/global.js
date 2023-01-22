@@ -1,15 +1,10 @@
-export const xnr = 'XNR3000';
-export const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin'
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster'
-  },
-  {
-    title: 'Armageddon',
-    author: 'Paul Coehlo'
-  }
-];
+const headers = new Headers();
+headers.append('content-type', 'application/json');
+
+const result = await fetch('http://localhost:3009/graphql', {
+  method: 'POST',
+  headers,
+  body: JSON.stringify({ query: '{books{title,author}}' })
+}).then(response => response.json());
+
+export const books = result?.data?.books;
