@@ -1,4 +1,4 @@
-import { books } from './global.js';
+import { books } from '../global.js';
 
 const list = document.getElementById('books');
 
