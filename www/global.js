@@ -26,9 +26,7 @@ export async function getBooks(key) {
       body: JSON.stringify({ query: '{books{title,author}}' })
     }).then(response => response.json());
     booksObj = result.data.books
-    console.log(booksObj)
-    console.log(await localStorage.getItem("books"))
-    setLocalStorage("books", books, expiry)
+    setLocalStorage("books", booksObj)
     return booksObj} else {
       booksObj = await JSON.parse(window.localStorage.getItem('books'));
       return booksObj.value
