@@ -1,36 +1,46 @@
 const headers = new Headers();
-headers.append('content-type', 'application/json');
+headers.append("content-type", "application/json");
 
-
-
-export async function setLocalStorage(key, value) {
-  // expiry check to be added
+export async function setLocalStorage(key, value, expiry) {
   const now = new Date();
-  const item = await {
+  const item = {
     value: value,
-    // expiry: now.getTime() + expiry
-  }
+    expiry: now.getTime() + expiry,
+  };
   await localStorage.setItem(key, JSON.stringify(item));
 }
 
-let booksObj
-
+let booksObj;
 
 export async function getBooks(key) {
-  // expiry check to be added
   const itemStr = await localStorage.getItem(key);
   if (!itemStr) {
-    const result = await fetch('http://localhost:3000/graphql', {
-      method: 'POST',
+    const result = await fetch("http://localhost:3000/graphql", {
+      method: "POST",
       headers,
-      body: JSON.stringify({ query: '{books{title,author}}' })
-    }).then(response => response.json());
-    booksObj = result.data.books
-    setLocalStorage("books", booksObj)
-    return booksObj} else {
-      booksObj = await JSON.parse(window.localStorage.getItem('books'));
-      return booksObj.value
+      body: JSON.stringify({ query: "{books{title,author}}" }),
+    }).then((response) => response.json());
+    booksObj = result?.data?.books;
+    setLocalStorage("books", booksObj, 10000);
+    return booksObj;
+  } else {
+    booksObj = await JSON.parse(window.localStorage.getItem("books"));
+    const expiry = booksObj.expiry;
+    if (new Date(expiry) < new Date().getTime()) {
+      window.localStorage.clear();
+      const result = await fetch("http://localhost:3000/graphql", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ query: "{books{title,author}}" }),
+      }).then((response) => response.json());
+      booksObj = result?.data?.books;
+      console.log(booksObj);
+      setLocalStorage("books", booksObj, 10000);
+      return booksObj;
+    } else {
+      return booksObj.value;
     }
+  }
 }
 
 export const books = await getBooks("books");
