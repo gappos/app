@@ -2,7 +2,7 @@ import { books } from '../global.js';
 
 const list = document.getElementById('books');
 
-await Array.isArray(await books) &&
+Array.isArray(books) &&
   books.forEach(({ title, author }) => {
     const _title = document.createElement('h4');
     _title.className += 'item item-title';
