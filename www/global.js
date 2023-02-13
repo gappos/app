@@ -15,14 +15,21 @@ let booksObj;
 export async function getBooks(key) {
   const itemStr = await localStorage.getItem(key);
   if (!itemStr) {
-    const result = await fetch("http://localhost:3000/graphql", {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ query: "{books{title,author}}" }),
-    }).then((response) => response.json());
-    booksObj = result?.data?.books;
-    setLocalStorage("books", booksObj, 10000);
-    return booksObj;
+    try {
+      const result = await fetch("http://localhost:3000/graphql", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ query: "{books{title,author}}" }),
+      }).then((response) => response.json());
+      console.log(result);
+      booksObj = result?.data?.books;
+      setLocalStorage("books", booksObj, 10000);
+      return booksObj;
+    } catch (error) {
+      document.getElementById(
+        "books"
+      ).innerHTML = `${error.message}. Please ensure API is running and try again.`;
+    }
   } else {
     booksObj = await JSON.parse(window.localStorage.getItem("books"));
     const expiry = booksObj.expiry;
@@ -34,7 +41,6 @@ export async function getBooks(key) {
         body: JSON.stringify({ query: "{books{title,author}}" }),
       }).then((response) => response.json());
       booksObj = result?.data?.books;
-      console.log(booksObj);
       setLocalStorage("books", booksObj, 10000);
       return booksObj;
     } else {
