@@ -1,10 +1,7 @@
 const headers = new Headers();
-headers.append('content-type', 'application/json');
+headers.append("content-type", "application/json");
 
-const result = await fetch('http://78.56.77.77:3000/graphql', {
-  method: 'POST',
-  headers,
-  body: JSON.stringify({ query: '{books{title,author}}' })
-}).then(response => response.json());
+import BooksState from "./states.js";
+const booksState = new BooksState();
 
-export const books = result?.data?.books;
+export const books = await booksState.getBooks("books");
