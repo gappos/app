@@ -1,3 +1,5 @@
-import { Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
-export const hasStatusBar = () => Platform.OS !== 'web';
+export const isMobile = () => Platform.OS !== 'web';
+
+export const screen = Dimensions.get('screen');
