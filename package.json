@@ -18,6 +18,7 @@
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
     "react-native-status-bar-height": "^2.6.0",
+    "react-native-switch": "^1.5.1",
     "react-native-web": "~0.18.10",
     "react-redux": "^8.0.7",
     "redux-thunk": "^2.4.2"
