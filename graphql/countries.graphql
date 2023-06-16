@@ -1,0 +1,13 @@
+query countries {
+  countries {
+    country
+    cities {
+      city
+      locationId
+    }
+    places {
+      place
+      locationId
+    }
+  }
+}
