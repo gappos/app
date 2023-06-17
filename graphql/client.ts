@@ -5,8 +5,10 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 
+import { env } from '../config';
+
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_API_URL,
+  uri: env.API_URL,
 });
 
 const client = new ApolloClient({
