@@ -3,12 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { isMobile } from '../helpers';
 
 import { State, Theme } from '../redux';
-import Counter from './common/Counter';
-import ScreenInfo from './common/ScreenInfo';
 import { useSelector } from 'react-redux';
 import { colors } from '../config';
 import ThemeSwitch from './common/ThemeSwitch';
 import Home from './screens/Home';
+import Countries from './screens/country/Countries';
 
 export default function App() {
   const theme = useSelector((state: State) => state.theme.theme);
@@ -33,6 +32,7 @@ export default function App() {
     },
     screen: {
       padding: 10,
+      width: '100%',
     },
   });
 
@@ -42,7 +42,8 @@ export default function App() {
       <ThemeSwitch style={styles.themeSwitch} />
       <Text style={styles.header}>This is GAPP App</Text>
       <View style={styles.screen}>
-        <Home />
+        {/* <Home /> */}
+        <Countries />
       </View>
     </View>
   );
