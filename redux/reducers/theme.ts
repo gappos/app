@@ -6,7 +6,7 @@ const initialState: { theme: Theme } = {
   theme: Theme.DARK,
 };
 
-const counterSlice = createSlice({
+const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
@@ -25,4 +25,4 @@ const counterSlice = createSlice({
 export const {
   reducer: theme,
   actions: { setDark, setLight, setTheme },
-} = counterSlice;
+} = themeSlice;
