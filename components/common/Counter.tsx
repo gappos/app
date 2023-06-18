@@ -3,9 +3,9 @@ import { Text, StyleSheet, View, TextInput, Keyboard } from 'react-native';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { State } from '../redux';
-import { addAmount, decrement, increment } from '../redux';
-import { colors } from '../config';
+import { State } from '../../redux';
+import { addAmount, decrement, increment } from '../../redux';
+import { colors } from '../../config';
 import Button from './Button';
 
 export default function Counter() {

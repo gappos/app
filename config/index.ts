@@ -16,3 +16,10 @@ export const colors: Colors = {
     buttonColor: `hsl(200,40%,70%)`,
   },
 };
+
+const localIP = '192.168.0.45:3000';
+// const localIP = 'localhost:3000';
+
+export const env = {
+  API_URL: `http://${localIP}/graphql`,
+};

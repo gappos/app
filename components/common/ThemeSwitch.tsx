@@ -1,13 +1,12 @@
 import { Switch } from 'react-native-switch';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyleProp, Text, View, ViewStyle } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
 
-import { State, Theme, setTheme } from '../redux';
-import { colors } from '../config';
-import { isMobile, screen } from '../helpers';
+import { State, Theme, setTheme } from '../../redux';
+import { colors } from '../../config';
+import { isMobile, screen } from '../../helpers';
 import DarkThemeIcon from './svg/DarkThemeIcon';
 import LightThemeIcon from './svg/LightThemeIcon';
-import { useState } from 'react';
 
 interface Props {
   style: StyleProp<ViewStyle>;

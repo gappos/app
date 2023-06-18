@@ -5,8 +5,8 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import { State } from '../redux';
-import { colors } from '../config';
+import { State } from '../../redux';
+import { colors } from '../../config';
 
 interface Props extends TouchableOpacityProps {
   title?: string;
