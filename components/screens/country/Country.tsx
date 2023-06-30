@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { Country as CountryType } from '../../../graphql';
 import Text from '../../common/Text';
-import Location from './Location';
+import ShowLocation from './ShowLocation';
 
 interface Props extends ViewProps {
   country: CountryType;
@@ -32,9 +32,10 @@ const Country = ({ country, style, ...remainingProps }: Props) => {
             </Pressable>
             {showCities && country?.cities.length
               ? country.cities.map(city => (
-                  <Location
+                  <ShowLocation
                     key={city.city}
                     name={city.city}
+                    locationId={city.locationId}
                     style={{ marginLeft: 30 }}
                   />
                 ))
@@ -46,9 +47,10 @@ const Country = ({ country, style, ...remainingProps }: Props) => {
             </Pressable>
             {showPlaces && country?.places.length
               ? country.places.map(place => (
-                  <Location
+                  <ShowLocation
                     key={place.place}
                     name={place.place}
+                    locationId={place.locationId}
                     style={{ marginLeft: 30 }}
                   />
                 ))
