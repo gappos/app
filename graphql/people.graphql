@@ -1,0 +1,5 @@
+query people($searchOptions: PeopleSearchInput!) {
+  people(searchOptions: $searchOptions) {
+    ...PersonDetails
+  }
+}

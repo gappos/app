@@ -1,0 +1,12 @@
+fragment PersonDetails on Person {
+  dob
+  dod
+  firstName
+  gender
+  id
+  lastName
+  middleName
+  name
+  placeId
+  pobId
+}
