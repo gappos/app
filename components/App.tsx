@@ -6,11 +6,11 @@ import { State, Theme } from '../redux';
 import { useSelector } from 'react-redux';
 import { colors } from '../config';
 import ThemeSwitch from './common/ThemeSwitch';
-import Home from './screens/Home';
-import Countries from './screens/country/Countries';
+import ShowScreen from './common/ShowScreen';
 
 export default function App() {
   const theme = useSelector((state: State) => state.theme.theme);
+  const screen = useSelector((state: State) => state.screen.screen);
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -42,8 +42,7 @@ export default function App() {
       <ThemeSwitch style={styles.themeSwitch} />
       <Text style={styles.header}>This is GAPP App</Text>
       <View style={styles.screen}>
-        {/* <Home /> */}
-        <Countries />
+        <ShowScreen screen={screen} />
       </View>
     </View>
   );
